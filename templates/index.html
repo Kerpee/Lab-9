@@ -1,25 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Main page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonebook</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #111;
+            color: #abf;
+            padding: 10px;
+            text-align: center;
+        }
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #abf;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #111;
+            color: #add;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
 </head>
+
 <body>
-<h2>Messages</h2>
-<form method="post" action="/add_message">
-    <input type="text" name="text">
-    <input type="text" name="tag">
-    <button type="submit">Add post</button>
-</form>
+    <header>
+        <h1>Phonebook</h1>
+    </header>
 
-<h3>Messages feed</h3>
-{% for message in messages %}
-<div>{{ message.text }}
-    {% for tag in message.tags %}
-        <b>#{{ tag.text }}</b>
-    {% endfor %}
-</div>
-{% endfor %}
+    <form method="post" action="/add_contact">
+        <input type="text" name="name" placeholder="Enter name" required>
+        <input type="text" name="phone" placeholder="Enter phone number" required>
+        <button type="submit">Add Contact</button>
+    </form>
 
+    <form method="post" action="/clear_msg">
+        <button type = submit>Очистить</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+        </tr>
+        {% for contact in contacts %}
+        <tr>
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.phone }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
+
 </html>
