@@ -40,13 +40,13 @@
 
 <body>
     <header>
-        <h1>Phonebook</h1>
+        <h1>Записная книжка</h1>
     </header>
 
     <form method="post" action="/add_contact">
-        <input type="text" name="name" placeholder="Enter name" required>
-        <input type="text" name="phone" placeholder="Enter phone number" required>
-        <button type="submit">Add Contact</button>
+        <input type="text" name="name" placeholder="Введите имя" required>
+        <input type="text" name="phone" placeholder="Введите номер телефона" required>
+        <button type="submit">Добавить контакт</button>
     </form>
 
     <form method="post" action="/clear_msg">
@@ -55,8 +55,8 @@
 
     <table>
         <tr>
-            <th>Name</th>
-            <th>Phone</th>
+            <th>Имя</th>
+            <th>Номер телефона</th>
         </tr>
         {% for contact in contacts %}
         <tr>
